@@ -5,11 +5,6 @@
 
 int main(int argc, char **argv)
 {    
-    for (size_t i = 0; i < argc; i++)
-    {
-        printf("argc:%ld argv:%s \n ", i, argv[i]);
-    }
-    
     FILE *file1, *file2;
     int printResult = 0, ignoreCapitalLower = 0;
     int ch1, ch2, result = 0, equal = 1;
@@ -22,7 +17,7 @@ int main(int argc, char **argv)
 
     for (int i = 1; i < argc; i++)
     {
-        if (!strcmp(argv[i], "-v") == 0)
+        if (!strcmp(argv[i], "-v"))
         {
             printResult = 1;
         }
