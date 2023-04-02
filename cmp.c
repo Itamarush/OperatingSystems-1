@@ -3,8 +3,8 @@
 #include <string.h>
 #include <ctype.h>
 
-int main(int argc, char **argv) {
-    
+int main(int argc, char **argv)
+{    
     for (size_t i = 0; i < argc; i++)
     {
         printf("argc:%ld argv:%s \n ", i, argv[i]);
@@ -14,12 +14,14 @@ int main(int argc, char **argv) {
     int printResult = 0, ignoreCapitalLower = 0;
     int ch1, ch2, result = 0, equal = 1;
 
-    if (argc < 3) {
+    if (argc < 3)
+    {
         fprintf(stderr, "Usage: cmp [-v] [-i] file1 file2\n");
         exit(1);
     }
 
-    for (int i = 1; i < argc; i++) {
+    for (int i = 1; i < argc; i++)
+    {
         if (!strcmp(argv[i], "-v") == 0)
         {
             printResult = 1;
@@ -31,48 +33,60 @@ int main(int argc, char **argv) {
     }
 
     file1 = fopen(argv[1], "rb");
-    if (file1 == NULL) {
+    if (file1 == NULL)
+    {
         fprintf(stderr, "Error opening file: %s\n", argv[1]);
         exit(1);
     }
 
     file2 = fopen(argv[2], "rb");
-    if (file2 == NULL) {
+    if (file2 == NULL)
+    {
         fprintf(stderr, "Error opening file: %s\n", argv[2]);
         exit(1);
     }
 
-    while (1) {
+    while (1)
+    {
         ch1 = fgetc(file1);
         ch2 = fgetc(file2);
 
-        if (ch1 == EOF || ch2 == EOF) {
-            if (ch1 != ch2) {
+        if (ch1 == EOF || ch2 == EOF)
+        {
+            if (ch1 != ch2)
+            {
                 equal = 0;
                 break;
             }
             break;
         }
 
-        if (ignoreCapitalLower) {
+        if (ignoreCapitalLower)
+        {
             ch1 = tolower(ch1);
             ch2 = tolower(ch2);
         }
 
-        if (ch1 != ch2) {
+        if (ch1 != ch2)
+        {
             equal = 0;
             break;
         }
     }
 
-    if (!equal) {
+    if (!equal)
+    {
         result = 1;
     }
 
-    if (printResult) {
-        if (equal) {
+    if (printResult)
+    {
+        if (equal)
+        {
             printf("equal\n");
-        } else {
+        }
+        else
+        {
             printf("distinct\n");
         }
     }
