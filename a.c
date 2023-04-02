@@ -11,16 +11,13 @@ int main(int argc, char **argv) {
     }
     
     FILE *file1, *file2;
-    char *filename1, *filename2;
     int printResult = 0, ignoreCapitalLower = 0;
     int ch1, ch2, result = 0, equal = 1;
-    char file1Name[50], file2Name[50];
 
     if (argc < 3) {
         fprintf(stderr, "Usage: cmp [-v] [-i] file1 file2\n");
         exit(1);
     }
-        printf("\n%d %d\n", printResult, ignoreCapitalLower);
 
     for (int i = 1; i < argc; i++) {
         if (!strcmp(argv[i], "-v") == 0)
@@ -32,17 +29,14 @@ int main(int argc, char **argv) {
             ignoreCapitalLower = 1;
         }
     }
-    printf("\n%d %d\n", printResult, ignoreCapitalLower);
-    
-    printf("this:%s \n", argv[1]);
-    
-    file1 = fopen(file1Name, "rb");
+
+    file1 = fopen(argv[1], "rb");
     if (file1 == NULL) {
         fprintf(stderr, "Error opening file: %s\n", argv[1]);
         exit(1);
     }
 
-    file2 = fopen(file2Name, "rb");
+    file2 = fopen(argv[2], "rb");
     if (file2 == NULL) {
         fprintf(stderr, "Error opening file: %s\n", argv[2]);
         exit(1);
